@@ -27,13 +27,7 @@ class RecordSoundsViewController: UIViewController , AVAudioRecorderDelegate{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
-//    override func viewDidAppear(_ animated: Bool) {
-//        print("viewWillAppear Called")
-//    }
-//
-//    override func didReceiveMemoryWarning() {
-//        super.didReceiveMemoryWarning()
-//    }
+
     
     @IBAction func recordAudio(_ sender: Any) {
         recordingLabel.text = "Recording in Progress"
@@ -78,5 +72,10 @@ class RecordSoundsViewController: UIViewController , AVAudioRecorderDelegate{
             playSoundVC.recordedAudioURL = recordedAudioURL
     }
         }
+    func setRecordingState(_ isRecording: Bool) {
+        stopRecordingButton.isEnabled = isRecording // to disable the button
+        recordButton.isEnabled = !isRecording // to enable the button
+        recordingLabel.text = !isRecording ? "Tap to Record" : "Recording in Progress"
+    }
     }
 
